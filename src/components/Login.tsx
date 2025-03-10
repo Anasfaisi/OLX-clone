@@ -28,7 +28,7 @@ const Login = (props:popupProp) => {
     
         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all  sm:w-96 sm:max-w-lg">
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <h1 onClick={()=>props?.setLoginPop(false)} className="font-semibold text-3xl cursor-pointer">X</h1>
+            <h1 onClick={()=>props?.setLoginPop(false)} className="font-semibold text-3xls cursor-pointer">X</h1>
             <div className="sm:flex sm:items-start">
             
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
