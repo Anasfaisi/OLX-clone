@@ -1,6 +1,5 @@
 // import { Heart } from "lucide-react"
 // import cards_data from "../../assets/cards/cards"
-import { useNavigate } from 'react-router-dom';
 import like_icon from '../assets/like_icon.svg'
 import { getData, Product } from "../context/productContext"
 import { useEffect, useState } from "react"
@@ -8,12 +7,7 @@ import { useEffect, useState } from "react"
 
 const Cards = () => {
   const [cardData, setCardData] = useState<Product[]>([]);
-  const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   // Navigate to the product details page using the product id
-  //   navigate(`/product/${product.id}`);
-  // };
 
   useEffect(() => {
     (async function () {

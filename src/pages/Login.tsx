@@ -1,4 +1,3 @@
-import React from "react";
 import guitar from "../assets/guitar2.webp";
 import google from "../assets/google.png";
 import phone from "../assets/phone.png";
@@ -6,8 +5,6 @@ import { auth, googleProvider } from "../firebase/setup";
 import {
   signInWithPopup,
   User,
-  onAuthStateChanged,
-  signOut,
 } from "firebase/auth";
 import { X } from "lucide-react";
 import { useState, useEffect } from "react";

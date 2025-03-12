@@ -4,7 +4,6 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase/setup";
 import { AppContext } from "../context/loginContext";
 import Login from "../pages/Login";
-import Sell from "../pages/Sell";
 import olx from "../assets/olx_logo.svg";
 import sell_button from "../assets/sell_button_cover.svg";
 import { Search, ChevronDown, Heart } from "lucide-react";
