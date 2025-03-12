@@ -1,11 +1,11 @@
 
 import React, { useState } from "react"
-import { useProduct } from "../firebase/productContext"
+import { useProduct } from "../context/productContext"
 import { useNavigate } from "react-router-dom"
 
 
 
-const Sell = () => {
+const Sell = ()=> {
     const navigate = useNavigate()
     const [name,setName]=useState('')
     const [price,setPrice]=useState('')
@@ -57,6 +57,7 @@ const Sell = () => {
 
     return (
         <div className="login bg-white shadow shadow-black w-[1000px] h-[1000px] text-white p-5 absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center gap-4">
+        
         <h1 className="text-black font-bold">Sell</h1>
         <form onSubmit={handleSubmit} className="w-full flex mt-0 flex-col gap-4">
             <input value={name} onChange={(e)=> setName(e.target.value)} className="w-80 text-black p-3 rounded outline placeholder-black outline-black mx-auto" type="text" placeholder="product name" />

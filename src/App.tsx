@@ -1,44 +1,46 @@
-import './App.css'
-import Home from './pages/Home'
-import {auth} from './firebase/setup'
-import {User} from "firebase/auth"
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
-import Sell from './pages/Sell'
-import { useEffect,useState } from 'react'
-import Login from './pages/Login'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import "./App.css";
+import { auth } from "./firebase/setup";
+import { User } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import {AppContext} from './context/loginContext'
+import Home from "./pages/Home";
+import Sell from "./pages/Sell";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
+import { AppContext } from "./context/loginContext";
+import { ProductProvider } from "./context/productContext";
 
- 
 function App() {
- 
-    const [user, setUser] = useState<User| null>(null);
-    // const [showLogin, setShowLogin] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    
-    const unsubscribe = auth.onAuthStateChanged((currentUser:User | null) => {
-      console.log(currentUser,"this is the current user")
+    const unsubscribe = auth.onAuthStateChanged((currentUser: User | null) => {
+      console.log(currentUser, "this is the current user");
       setUser(currentUser);
     });
 
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, []);
 
   return (
-    <>
-    <AppContext.Provider value={{data:user,setter:setUser}}>
+    <AppContext.Provider value={{ data: user, setter: setUser }}>
+      <ProductProvider>
+        {/* Navbar and Footer will always be present */}
+        <Navbar />
+        
+        {/* Define Routes for different pages */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sell" element={<Sell />} />
 
-      <Navbar />
-      <Footer />
+        </Routes>
 
-      
-      </AppContext.Provider>
-    </>
+        <Footer />
+      </ProductProvider>
+    </AppContext.Provider>
   );
 }
 
-export default App
+export default App;

@@ -1,12 +1,19 @@
 // import { Heart } from "lucide-react"
 // import cards_data from "../../assets/cards/cards"
-import like_icon from '../../assets/like_icon.svg'
-import { getData, Product } from "../firebase/productContext"
+import { useNavigate } from 'react-router-dom';
+import like_icon from '../assets/like_icon.svg'
+import { getData, Product } from "../context/productContext"
 import { useEffect, useState } from "react"
 
 
 const Cards = () => {
   const [cardData, setCardData] = useState<Product[]>([]);
+  const navigate = useNavigate();
+
+  // const handleClick = () => {
+  //   // Navigate to the product details page using the product id
+  //   navigate(`/product/${product.id}`);
+  // };
 
   useEffect(() => {
     (async function () {
@@ -16,10 +23,10 @@ const Cards = () => {
   }, [])
 
   return (
-    <div className="cards-div grid grid-cols-2 md:grid-cols-4 gap-[10px]">
+    <div className="cards-div grid grid-cols-2 md:grid-cols-4 gap-[10px] ml-20 mr-20">
       {cardData.length &&
         cardData?.map((card, index) =>
-          <div className="card  border-1 outline-1 outline-gray-300 rounded-[4px] border-gray-100 shadow bg-white " key={index}>
+          <div onClick={()=>console.log(cardData)} className="card  border-1 outline-1 outline-gray-300 rounded-[4px] border-gray-100 shadow bg-white " key={index}>
             <div className="relative ">
               <div className=" absolute right-2 top-2 rounded-full bg-white w-[30px] h-[30px] flex items-center justify-center">
                 <img src={like_icon} height='20px' alt="hjg" />
@@ -33,6 +40,7 @@ const Cards = () => {
               <p className="ml-3 ">{card.place}</p>
               <p className="mr-2">{card.date}</p>
             </div>
+            {/* <h1 className="font-bold text-[20px] ml-3">₹ {card.name}</h1> */}
           </div>
         )
       }

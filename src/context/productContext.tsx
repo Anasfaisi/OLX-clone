@@ -1,8 +1,9 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { db } from "../firebase/setup";
 
-const db = getFirestore();
+
 
 export interface Product {
   name: string;
@@ -18,7 +19,7 @@ interface ProductContextType {
   addProduct: (product: Product) => Promise<void>;
 }
 
-const ProductContext = createContext<ProductContextType | undefined>(undefined);
+ export const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 
 
@@ -30,12 +31,12 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     const data = new FormData();
     data.append("file", image);
-    data.append("upload_preset", "olx_clone");
-    data.append("cloud_name", "dddn8wgld");
+    data.append("upload_preset", "olx-clone");
+    data.append("cloud_name", "dufb78hcb");
 
     try {
       const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dddn8wgld/image/upload",
+        "https://api.cloudinary.com/v1_1/dufb78hcb/image/upload",
         {
           method: "POST",
           body: data,
